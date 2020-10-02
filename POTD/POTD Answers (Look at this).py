@@ -1,3 +1,12 @@
+#-----------------------------------------------------------------------------
+# Name:        Problem of the day
+# Purpose:     Practice finding errors and fixing code
+#
+# Author:      Daniel
+# Created:     28-Sept-2020
+# Updated:     30-Sept-2020
+#-----------------------------------------------------------------------------
+
 #warm-up 1 (monkey trouble)
 #Note for self: In python use 'and' instead of &&
 def monkey_trouble(a_smile, b_smile):
