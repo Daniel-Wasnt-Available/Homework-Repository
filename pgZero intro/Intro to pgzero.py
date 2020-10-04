@@ -10,7 +10,7 @@ alien = Actor('alien')
 alien.topright = 0, 10
 
 WIDTH = 500
-HEIGHT = alien.height + 20
+HEIGHT = alien.height + 400
 
 def draw():
     screen.clear()
