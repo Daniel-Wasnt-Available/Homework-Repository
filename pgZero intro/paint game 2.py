@@ -8,29 +8,25 @@
 # Updated:     05-Oct-2020
 #-----------------------------------------------------------------------------
 
-WIDTH = 800
-HEIGHT = 600
-brushLocation = (400,300)
-drawEnabled = False
-ship = Actor('ship')
-ship.pos = 0,0
-
-
 gameState = ''
-
+clear = True
 def startUp():
     '''Run this to get the program ready to run'''
     global gameState
 
-    gameState == "start"
+    gameState = 'start screen'
     
-    
+
 def on_key_up(key):
     '''Check to see if a key has been released'''
     global gameState #Make sure you make globals if necessary
-
+    
     if key == keys.A:
         gameState = 'paint'
+        screen.clear
+    
+    elif key == keys.E:
+        gameState = 'end'
 
 def on_mouse_move(pos, rel, buttons):
     global brushLocation
@@ -49,30 +45,36 @@ def on_mouse_move(pos, rel, buttons):
 
 
 def draw():
-    global gameState
-    if gameState == "start":
+    '''Draw loop for all the graphical elements to display'''
+
+    if gameState == "start screen":
         screen.clear()
-        screen.fill((0, 0, 0))
-        screen.draw.text("Hello, Welcome to my program", (0, 0), green)
-        screen.draw.text("Press the secret key", (0, 0), red)
+        screen.fill((255, 255, 255))
+        screen.draw.text("Hello, Welcome to my program", (25, 30), color="orange")
+        screen.draw.text("Press A to start painting", (25, 70), color="red")
+
         
-    elif gameState =='paint':
-        ship.draw()
-        ship.topright= 0, 10
-        screen.fill((173,216,230))
+    elif gameState == "paint":
         global brushLocation
         global drawEnabled
-        #screen.clear()
+        global clear
+        screen.draw.text("Press E to leave", (25, 70), color="red")
+        if clear == True:
+            screen.clear
+            screen.fill((173,216,230))
         if drawEnabled == True:
             screen.draw.circle(brushLocation, 3, 'purple')
+            clear = False
+            
+    elif gameState == "end":
+        screen.clear()
+        screen.fill((255, 182, 193))
+        screen.draw.text("Thanks For Plyaing", (300, 300), color="cyan")
 
-def update():
-    ship.left += 2
-    if ship.left > WIDTH:
-        ship.right = 0
+    else:
+        screen.clear()
+        screen.fill((255, 255, 255))
+        screen.draw.text("Error, no game state loaded", (25, 30), color="orange")
+
 
 startUp()
-        
-        
-        
-        

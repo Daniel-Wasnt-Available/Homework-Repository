@@ -33,3 +33,4 @@ def set_alien_normal():
     alien.image = 'alien'
     sounds.eep.play()
     clock.schedule_unique(set_alien_normal, 1.0)
+    
