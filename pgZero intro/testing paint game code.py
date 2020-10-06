@@ -57,8 +57,6 @@ def draw():
         screen.draw.text("Press the secret key", (0, 0), red)
         
     elif gameState =='paint':
-        ship.draw()
-        ship.topright= 0, 10
         screen.fill((173,216,230))
         global brushLocation
         global drawEnabled
@@ -66,10 +64,6 @@ def draw():
         if drawEnabled == True:
             screen.draw.circle(brushLocation, 3, 'purple')
 
-def update():
-    ship.left += 2
-    if ship.left > WIDTH:
-        ship.right = 0
 
 startUp()
         

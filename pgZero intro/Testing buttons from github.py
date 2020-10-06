@@ -1,4 +1,3 @@
-  
 #-----------------------------------------------------------------------------
 # Name:        Paint Game
 # Purpose:     Get started with pygame zero
@@ -9,51 +8,58 @@
 #-----------------------------------------------------------------------------
 WIDTH = 800
 HEIGHT = 600
-
+drawX=400
+drawY=300
 gameState = ''
 clear = True
+move = True
 
-button1Draw = [WIDTH/2, HEIGHT/2, 100, 50] #[left, top, width, size]
+button1Draw = [drawX, drawY, 100, 50] #[left, top, width, size]
 button1Rect = Rect(button1Draw) 
-button1Value = False  #Give the button a vale
+button1Value = True  #Give the button a vale
 button1Color = 'green' #Give the buttton a color, can also use (r, g, b) sets
-
+button2Draw = [100, 100, 100, 50] #[left, top, width, size]
+button2Rect = Rect(button2Draw) 
+button2Color = (255, 255, 255)
 
 def startUp():
     '''Run this to get the program ready to run'''
     global gameState
-
+    global drawY
+    global drawX
+    global move
+    if move == True:
+        drawX = drawX + 2
+    
     gameState = 'start screen'
     
 def on_mouse_up(pos, button):
     '''Pygame Special Event Hook - Runs when the mouse button is released'''
-
+    global gameState
     global button1Color
     global button1Value
+    global earase
     
-     
+    #screen.draw.text("Start",(WIDTH/2,HEIGHT/2),color="blue")
     if button1Rect.collidepoint(pos): 
         print("Button 1 Clicked!", button1Value)
-        
        
         if  button1Value == True:
-            button1Color = 'light green'
-            button1Value = False
+            gameState = 'paint'
+            screen.clear
 
-        else:
-            button1Color = 'green'
-            button1Value = True
+    if gameState == 'paint':
+            if button1Rect.collidepoint(pos): 
+                print("Button 1 Clicked!")
+                earase = True
 
 
 def on_key_up(key):
     '''Check to see if a key has been released'''
     global gameState #Make sure you make globals if necessary
     
-    if key == keys.A:
-        gameState = 'paint'
-        screen.clear
     
-    elif key == keys.E:
+    if key == keys.E:
         gameState = 'end'
 
     elif key == keys.C:
@@ -97,7 +103,8 @@ def draw():
         if drawEnabled == True:
             screen.draw.circle(brushLocation, 3, 'purple')
             clear = False
-            
+        screen.draw.filled_rect(button2Rect, button2Color)
+                
     elif gameState == "end":
         screen.clear()
         screen.fill((255, 182, 193))
