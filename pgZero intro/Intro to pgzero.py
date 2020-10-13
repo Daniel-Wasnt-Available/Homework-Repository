@@ -6,6 +6,21 @@
 # Created:     2-oct-2020
 # Updated:     2-oct-2020
 #-----------------------------------------------------------------------------
+''' This is what my error says for this code
+Hello from the pygame community. https://www.pygame.org/contribute.html
+Traceback (most recent call last):
+  File "/Users/danielw/Documents/GitHub/homework-repository-Daniel-Wasnt-Available/pgZero intro/Intro to pgzero.py", line 9, in <module>
+    alien = Actor('alien')
+  File "/Users/danielw/Library/Python/3.7/lib/python/site-packages/pgzero/actor.py", line 88, in __init__
+    self.image = image
+  File "/Users/danielw/Library/Python/3.7/lib/python/site-packages/pgzero/actor.py", line 103, in __setattr__
+    return object.__setattr__(self, attr, value)
+  File "/Users/danielw/Library/Python/3.7/lib/python/site-packages/pgzero/actor.py", line 218, in image
+    self._orig_surf = self._surf = loaders.images.load(image)
+  File "/Users/danielw/Library/Python/3.7/lib/python/site-packages/pgzero/loaders.py", line 115, in load
+    key = self.cache_key(self, name, args, kwargs)
+TypeError: cache_key() takes 3 positional arguments but 5 were given
+'''
 alien = Actor('alien')
 alien.topright = 0, 10
 
